@@ -37,7 +37,7 @@ namespace black_cat
    using t_u64 = ::std::uint64_t;
 
    // 64-bit floating-point type
-   using t_f64 = float;
+   using t_f64 = double;
 
    // pointer-wide signed integer type
    using t_sptr_size = ::std::intptr_t;
