@@ -1,9 +1,9 @@
 *
-!.gitignore
-!.h
-!.hh
-!.hpp
-!.c
-!.cc
-!.cpp
-!.inc
+!*.gitignore
+!*.h
+!*.hh
+!*.hpp
+!*.c
+!*.cc
+!*.cpp
+!*.inc
