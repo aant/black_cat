@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\basic_operations_tests.cpp" />
     <ClCompile Include="..\basic_types_tests.cpp" />
     <ClCompile Include="..\test_all.cpp" />
   </ItemGroup>
