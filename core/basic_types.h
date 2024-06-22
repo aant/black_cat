@@ -68,7 +68,7 @@ namespace black_cat
    namespace core_details
    {
       template <typename T, T min_value, T max_value>
-      struct t_minmax
+      struct t_minmax_helper
       {
          static constexpr T MIN_VALUE = min_value;
          static constexpr T MAX_VALUE = max_value;
@@ -80,37 +80,47 @@ namespace black_cat
    struct t_minmax;
 
    template <>
-   struct t_minmax<t_s8> : core_details::t_minmax<t_s8, INT8_MIN, INT8_MAX> { };
+   struct t_minmax<t_s8> : core_details::t_minmax_helper<t_s8, INT8_MIN, INT8_MAX> { };
 
    template <>
-   struct t_minmax<t_u8> : core_details::t_minmax<t_u8, 0, UINT8_MAX> { };
+   struct t_minmax<t_u8> : core_details::t_minmax_helper<t_u8, 0, UINT8_MAX> { };
 
    template <>
-   struct t_minmax<t_s16> : core_details::t_minmax<t_s16, INT16_MIN, INT16_MAX> { };
+   struct t_minmax<t_s16> : core_details::t_minmax_helper<t_s16, INT16_MIN, INT16_MAX> { };
 
    template <>
-   struct t_minmax<t_u16> : core_details::t_minmax<t_u16, 0, UINT16_MAX> { };
+   struct t_minmax<t_u16> : core_details::t_minmax_helper<t_u16, 0, UINT16_MAX> { };
 
    template <>
-   struct t_minmax<t_s32> : core_details::t_minmax<t_s32, INT32_MIN, INT32_MAX> { };
+   struct t_minmax<t_s32> : core_details::t_minmax_helper<t_s32, INT32_MIN, INT32_MAX> { };
 
    template <>
-   struct t_minmax<t_u32> : core_details::t_minmax<t_u32, 0, UINT32_MAX> { };
+   struct t_minmax<t_u32> : core_details::t_minmax_helper<t_u32, 0, UINT32_MAX> { };
 
    template <>
-   struct t_minmax<t_s64> : core_details::t_minmax<t_s64, INT64_MIN, INT64_MAX> { };
+   struct t_minmax<t_s64> : core_details::t_minmax_helper<t_s64, INT64_MIN, INT64_MAX> { };
 
    template <>
-   struct t_minmax<t_u64> : core_details::t_minmax<t_u64, 0, UINT64_MAX> { };
+   struct t_minmax<t_u64> : core_details::t_minmax_helper<t_u64, 0, UINT64_MAX> { };
 
    #ifdef _MSC_VER
 
       template <>
-      struct t_minmax<signed long> : core_details::t_minmax<signed long, LONG_MIN, LONG_MAX> { };
+      struct t_minmax<signed long> : core_details::t_minmax_helper<signed long, LONG_MIN, LONG_MAX> { };
 
       template <>
-      struct t_minmax<unsigned long> : core_details::t_minmax<unsigned long, 0, ULONG_MAX> { };
+      struct t_minmax<unsigned long> : core_details::t_minmax_helper<unsigned long, 0, ULONG_MAX> { };
 
    #endif // _MSC_VER
+
+   namespace type_traits
+   {
+      template <typename T>
+      struct is_signed
+      {
+         static constexpr t_bool v = T(-1) < T(0);
+      };
+
+   } // namespace type_traits
 
 } // namespace black_cat
