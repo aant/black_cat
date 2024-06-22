@@ -7,6 +7,6 @@
 !*.cc
 !*.cpp
 !*.inc
-!*tests/msvs/msvs.sln
-!*tests/msvs/msvs.vcxproj
-!*tests/msvs/msvs.vcxproj.filters
+!*.sln
+!*.vcxproj
+!*.filters
