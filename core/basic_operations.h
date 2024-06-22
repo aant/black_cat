@@ -7,213 +7,104 @@
 
 namespace black_cat
 {
-   /**
-      \brief gets the minimum of two values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the minimum of two values
-   */
+   // gets the minimum of two values
+   // T should provide operator <
    template <typename T>
    inline T get_min(T value1, T value2) noexcept
    {
       return value1 < value2 ? value1 : value2;
    }
 
-   /**
-      \brief gets the minimum of two values (template function, specialized for t_f32 type)
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the minimum of two values
-   */
+   // gets the minimum of two values
+   // 32-bit floating-point specialization
    template <>
    inline t_f32 get_min<t_f32>(t_f32 value1, t_f32 value2) noexcept
    {
       return std::fmin(value1, value2);
    }
 
-   /**
-      \brief gets the minimum of two values (template function, specialized for t_f64 type)
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the minimum of two values
-   */
+   // gets the minimum of two values
+   // 64-bit floating-point specialization
    template <>
    inline t_f64 get_min<t_f64>(t_f64 value1, t_f64 value2) noexcept
    {
       return std::fmin(value1, value2);
    }
 
-   /**
-      \brief gets the minimum of three values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-
-      \return the minimum of three values
-   */
+   // gets the minimum of three values
+   // T should provide operator <
    template <typename T>
    inline T get_min(T value1, T value2, T value3) noexcept
    {
       return get_min(get_min(value1, value2), value3);
    }
 
-   /**
-      \brief gets the minimum of four values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-      \param [in] value4 the fourth value
-
-      \return the minimum of four values
-   */
+   // gets the minimum of four values
+   // T should provide operator <
    template <typename T>
    inline T get_min(T value1, T value2, T value3, T value4) noexcept
    {
       return get_min(get_min(get_min(value1, value2), value3), value4);
    }
 
-   /**
-      \brief gets the minimum of five values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-      \param [in] value4 the fourth value
-      \param [in] value5 the fifth value
-
-      \return the minimum of five values
-   */
+   // gets the minimum of five values
+   // T should provide operator <
    template <typename T>
    inline T get_min(T value1, T value2, T value3, T value4, T value5) noexcept
    {
       return get_min(get_min(get_min(get_min(value1, value2), value3), value4), value5);
    }
 
-   /**
-      \brief gets the maximum of two values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the maximum of two values
-   */
+   // gets the maximum of two values
+   // T should provide operator >
    template <typename T>
    inline T get_max(T value1, T value2) noexcept
    {
       return value1 > value2 ? value1 : value2;
    }
 
-   /**
-      \brief gets the maximum of two values (template function, specialized for t_f32 type)
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the maximum of two values
-   */
+   // gets the maximum of two values
+   // 32-bit floating-point specialization
    template <>
    inline t_f32 get_max<t_f32>(t_f32 value1, t_f32 value2) noexcept
    {
       return std::fmax(value1, value2);
    }
 
-   /**
-      \brief gets the maximum of two values (template function, specialized for t_f64 type)
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-
-      \return the maximum of two values
-   */
+   // gets the maximum of two values
+   // 64-bit floating-point specialization
    template <>
    inline t_f64 get_max<t_f64>(t_f64 value1, t_f64 value2) noexcept
    {
       return std::fmax(value1, value2);
    }
 
-   /**
-      \brief gets the maximum of three values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-
-      \return the maximum of three values
-   */
+   // gets the maximum of three values
+   // T should provide operator >
    template <typename T>
    inline T get_max(T value1, T value2, T value3) noexcept
    {
       return get_max(get_max(value1, value2), value3);
    }
 
-   /**
-      \brief gets the maximum of four values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-      \param [in] value4 the fourth value
-
-      \return the maximum of four values
-   */
+   // gets the maximum of four values
+   // T should provide operator >
    template <typename T>
    inline T get_max(T value1, T value2, T value3, T value4) noexcept
    {
       return get_max(get_max(get_max(value1, value2), value3), value4);
    }
 
-   /**
-      \brief gets the maximum of five values
-
-      \tparam T - an type that supports operator <
-
-      \param [in] value1 the first value
-      \param [in] value2 the second value
-      \param [in] value3 the third value
-      \param [in] value4 the fourth value
-      \param [in] value5 the fifth value
-
-      \return the maximum of five values
-   */
+   // gets the maximum of five values
+   // T should provide operator >
    template <typename T>
    inline T get_max(T value1, T value2, T value3, T value4, T value5) noexcept
    {
       return get_max(get_max(get_max(get_max(value1, value2), value3), value4), value5);
    }
 
-   /**
-      \brief clamps a value to a range
-
-      \tparam T - an type that supports operators <, >
-
-      \param [in] src_value the source value
-      \param [in] min_value the lower bound value
-      \param [in] max_value the upper bound value
-
-      \return the value test_value, clamped to the range [min_value, max_value]
-   */
+   // clamps a value to a specified range
+   // T should provide operators <, >
    template <typename T>
    inline T clamp(T src_value, T min_value, T max_value) noexcept
    {
@@ -221,17 +112,8 @@ namespace black_cat
       return get_min(get_max(src_value, min_value), max_value);
    }
 
-   /**
-      \brief tests if a value is in a range
-
-      \tparam T - an type that supports operators >=, <=
-
-      \param [in] test_value the testing value
-      \param [in] min_value the lower bound value
-      \param [in] max_value the upper bound value
-
-      \return true if the value test_value is in the range [min_value, max_value], and false otherwise
-   */
+   // checks a value is in a specified range
+   // T should provide operators <=, >=
    template <typename T>
    inline t_bool in_range(T test_value, T min_value, T max_value) noexcept
    {
@@ -263,79 +145,45 @@ namespace black_cat
 
    } // namespace core_details
 
+   // gets the absolute of specified value
+   // T should support operators >=, ==, unary -, if it is signed type
    template <typename T>
    inline T get_abs(T value) noexcept
    {
       return core_details::t_abs_helper::get_value(value);
    }
 
-   /**
-      \brief rounds a value up to the nearest greater integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest greater integer
    inline t_f32 round_up(t_f32 value) noexcept
    {
       return std::ceil(value);
    }
 
-   /**
-      \brief rounds a value up to the nearest greater integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest greater integer
    inline t_f64 round_up(t_f64 value) noexcept
    {
       return std::ceil(value);
    }
 
-   /**
-      \brief rounds a value down to the nearest lesser integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest lesser integer
    inline t_f32 round_dn(t_f32 value) noexcept
    {
       return std::floor(value);
    }
 
-   /**
-      \brief rounds a value down to the nearest lesser integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest lesser integer
    inline t_f64 round_dn(t_f64 value) noexcept
    {
       return std::floor(value);
    }
 
-   /**
-      \brief rounds a value to the nearest integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest integer
    inline t_f32 round_nst(t_f32 value) noexcept
    {
       return std::round(value);
    }
 
-   /**
-      \brief rounds a value to the nearest integer
-
-      \param [in] value the rounding value
-
-      \return the rounded value
-   */
+   // rounds a value to the nearest integer
    inline t_f64 round_nst(t_f64 value) noexcept
    {
       return std::round(value);
