@@ -123,7 +123,7 @@ namespace black_cat
 
    namespace core_details
    {
-      template <typename T, t_bool is_signed = T(-1) < T(0)>
+      template <typename T, t_bool is_signed>
       struct t_abs_helper
       {
          static constexpr T MIN_VALUE = black_cat::t_minmax<T>::MIN_VALUE;
@@ -150,7 +150,7 @@ namespace black_cat
    template <typename T>
    inline T get_abs(T value) noexcept
    {
-      return core_details::t_abs_helper::get_value(value);
+      return core_details::t_abs_helper<T, type_traits::is_signed<T>::v>::get_value(value);
    }
 
    // rounds a value to the nearest greater integer

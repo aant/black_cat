@@ -12,86 +12,92 @@
 #endif
 
 template <typename T>
-inline void utest_print_value(const T& value, FILE* f_out) noexcept;
+inline void utest_print_value(T value, FILE* f_out) noexcept;
 
 template <>
-inline void utest_print_value<std::int8_t>(const std::int8_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%d", value);
-}
-
-template <>
-inline void utest_print_value<std::uint8_t>(const std::uint8_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%u", value);
-}
-
-template <>
-inline void utest_print_value<std::int16_t>(const std::int16_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%d", value);
-}
-
-template <>
-inline void utest_print_value<std::uint16_t>(const std::uint16_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%u", value);
-}
-
-template <>
-inline void utest_print_value<std::int32_t>(const std::int32_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%ld", value);
-}
-
-template <>
-inline void utest_print_value<std::uint32_t>(const std::uint32_t& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%lu", value);
-}
-
-template <>
-inline void utest_print_value<float>(const float& value, FILE* f_out) noexcept
-{
-   std::fprintf(f_out, "%.4f", value);
-}
-
-template <>
-inline void utest_print_value<std::int64_t>(const std::int64_t& value, FILE* f_out) noexcept
+inline void utest_print_value<std::int64_t>(std::int64_t value, FILE* f_out) noexcept
 {
    std::fprintf(f_out, "%lld", value);
 }
 
 template <>
-inline void utest_print_value<std::uint64_t>(const std::uint64_t& value, FILE* f_out) noexcept
+inline void utest_print_value<std::uint64_t>(std::uint64_t value, FILE* f_out) noexcept
 {
    std::fprintf(f_out, "%llu", value);
 }
 
 template <>
-inline void utest_print_value<double>(const double& value, FILE* f_out) noexcept
+inline void utest_print_value<std::int8_t>(std::int8_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::int64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<std::uint8_t>(std::uint8_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::uint64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<std::int16_t>(std::int16_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::int64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<std::uint16_t>(std::uint16_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::uint64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<std::int32_t>(std::int32_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::int64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<std::uint32_t>(std::uint32_t value, FILE* f_out) noexcept
+{
+   utest_print_value<std::uint64_t>(value, f_out);
+}
+
+template <>
+inline void utest_print_value<float>(float value, FILE* f_out) noexcept
+{
+   std::fprintf(f_out, "%.4f", value);
+}
+
+template <>
+inline void utest_print_value<double>(double value, FILE* f_out) noexcept
 {
    std::fprintf(f_out, "%.8f", value);
 }
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 
    template <>
-   inline void utest_print_value<signed long>(const signed long& value, FILE* f_out) noexcept
+   inline void utest_print_value<signed long>(signed long value, FILE* f_out) noexcept
    {
-      std::fprintf(f_out, "%ld", value);
+      utest_print_value<std::int64_t>(value, f_out);
    }
 
    template <>
-   inline void utest_print_value<unsigned long>(const unsigned long& value, FILE* f_out) noexcept
+   inline void utest_print_value<unsigned long>(unsigned long value, FILE* f_out) noexcept
    {
-      std::fprintf(f_out, "%lu", value);
+      utest_print_value<std::uint64_t>(value, f_out);
    }
 
-#endif
+#endif // _WIN32
 
 template <>
-inline void utest_print_value<bool>(const bool& value, FILE* f_out) noexcept
+inline void utest_print_value<char>(char value, FILE* f_out) noexcept
+{
+   std::fprintf(f_out, "%c", value);
+}
+
+template <>
+inline void utest_print_value<bool>(bool value, FILE* f_out) noexcept
 {
    std::fputs(value ? "TRUE" : "FALSE", f_out);
 }

@@ -19,7 +19,7 @@ struct c_custom_class
 };
 
 template <>
-inline void utest_print_value<c_custom_class>(const c_custom_class& value, FILE* f_out) noexcept
+inline void utest_print_value<c_custom_class>(c_custom_class value, FILE* f_out) noexcept
 {
    std::fprintf(f_out, "c_custom_class { %d }", value.x);
 }

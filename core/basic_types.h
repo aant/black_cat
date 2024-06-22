@@ -2,11 +2,8 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <climits>
 #include <cfloat>
-
-#ifdef _MSC_VER
-   #include <climits>
-#endif
 
 namespace black_cat
 {
@@ -103,7 +100,10 @@ namespace black_cat
    template <>
    struct t_minmax<t_u64> : core_details::t_minmax_helper<t_u64, 0, UINT64_MAX> { };
 
-   #ifdef _MSC_VER
+   template <>
+   struct t_minmax<char> : core_details::t_minmax_helper<char, CHAR_MIN, CHAR_MAX> { };
+
+   #ifdef _WIN32
 
       template <>
       struct t_minmax<signed long> : core_details::t_minmax_helper<signed long, LONG_MIN, LONG_MAX> { };
@@ -111,10 +111,22 @@ namespace black_cat
       template <>
       struct t_minmax<unsigned long> : core_details::t_minmax_helper<unsigned long, 0, ULONG_MAX> { };
 
-   #endif // _MSC_VER
+   #endif // _WIN32
 
    namespace type_traits
    {
+      template <typename F, typename S>
+      struct is_same
+      {
+         static constexpr t_bool v = false;
+      };
+
+      template <typename T>
+      struct is_same<T, T>
+      {
+         static constexpr t_bool v = true;
+      };
+
       template <typename T>
       struct is_signed
       {
