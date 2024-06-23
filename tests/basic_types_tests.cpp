@@ -6,8 +6,6 @@ using namespace black_cat;
 
 static bool test_minmax()
 {
-   std::fputs("\nTesting numeric limits (min and max) ...\n", stdout);
-
    UTEST_ASSERT_EQUAL(t_minmax<t_s8>::MIN_VALUE, INT8_MIN);
    UTEST_ASSERT_EQUAL(t_minmax<t_s8>::MAX_VALUE, INT8_MAX);
    UTEST_ASSERT_EQUAL(t_minmax<t_u8>::MIN_VALUE, 0);
@@ -61,14 +59,11 @@ static bool test_minmax()
    UTEST_ASSERT_EQUAL(t_minmax<unsigned long long>::MIN_VALUE, 0);
    UTEST_ASSERT_EQUAL(t_minmax<unsigned long long>::MAX_VALUE, ULLONG_MAX);
 
-   std::fputs("done\n", stdout);
    return true;
 }
 
 static bool test_type_traits_is_signed()
 {
-   std::fputs("\nTesting type traits (is signed) ...\n", stdout);
-
    UTEST_ASSERT_TRUE(type_traits::is_signed<t_s8>::v);
    UTEST_ASSERT_FALSE(type_traits::is_signed<t_u8>::v);
 
@@ -102,14 +97,11 @@ static bool test_type_traits_is_signed()
    UTEST_ASSERT_TRUE(type_traits::is_signed<signed long long>::v);
    UTEST_ASSERT_FALSE(type_traits::is_signed<unsigned long long>::v);
 
-   std::fputs("done\n", stdout);
    return true;
 }
 
 static bool test_type_traits_is_same()
 {
-   std::fputs("\nTesting type traits (is same) ...\n", stdout);
-
    // extra parentheses are needed to prevent the preprocessor from going crazy
 
    UTEST_ASSERT_TRUE((type_traits::is_same<t_s8, t_s8>::v));
@@ -118,11 +110,10 @@ static bool test_type_traits_is_same()
    UTEST_ASSERT_FALSE((type_traits::is_same<char, signed char>::v));
    UTEST_ASSERT_FALSE((type_traits::is_same<char, unsigned char>::v));
 
-   std::fputs("done\n\n", stdout);
    return true;
 }
 
-bool test_basic_types() noexcept
+bool test_basic_types()
 {
    return test_minmax() && test_type_traits_is_signed() && test_type_traits_is_same();
 }

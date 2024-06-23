@@ -17,6 +17,12 @@
     <ClCompile Include="..\basic_operations_tests.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\basic_math_tests.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vector2_tests.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\utest.h">

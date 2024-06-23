@@ -24,7 +24,7 @@ inline void utest_print_value<c_custom_class>(c_custom_class value, FILE* f_out)
    std::fprintf(f_out, "c_custom_class { %d }", value.x);
 }
 
-bool test_basic_operations() noexcept
+bool test_basic_operations()
 {
    UTEST_ASSERT_EQUAL(get_min(1, 2), 1);
    UTEST_ASSERT_LESS(get_min(1.5, 2.5), 2.5);

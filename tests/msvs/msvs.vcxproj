@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\basic_math_tests.cpp" />
     <ClCompile Include="..\basic_operations_tests.cpp" />
     <ClCompile Include="..\basic_types_tests.cpp" />
     <ClCompile Include="..\test_all.cpp" />
+    <ClCompile Include="..\vector2_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\utest.h" />
