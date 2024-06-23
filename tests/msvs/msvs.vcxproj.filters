@@ -23,6 +23,9 @@
     <ClCompile Include="..\vector2_tests.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\image_tests.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\utest.h">
